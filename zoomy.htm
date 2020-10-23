@@ -1,13 +1,14 @@
 <!DOCTYPE HTML>
 <head>
 	<meta charset = "utf-8" />
-	<title>Сімейне дерево</title>
+	<title>Untitled 2</title>
     
-</head>
 <link type="text/css" rel="stylesheet" href="zoomy.css"/>
 
-<script type="text/javascript"  src="jquery-1.8.0.min.js"></script>
-<script type="text/javascript"  src="zoomy.js"></script>
+<script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="zoomy.js"></script>
+</head>
+
 <body>
 
 
@@ -21,22 +22,115 @@
     user-select: none;border: none;
 	font-family: 'SegoeScript';
 }
-</style>
+/* слой затемнения */
+.dm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+ 
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+/* активируем слой затемнения и модальное окно */
+.dm-overlay:target {
+    display: block;
+/* анимация и время задержки */
+    -webkit-animation: fade .6s;
+    -moz-animation: fade .6s;
+    animation: fade .6s;
+}
+/* блочная таблица */
+.dm-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+/* ячейка блочной таблицы */
+.dm-cell {
+    display: table-cell;
+    padding: 0 1em;
+    vertical-align: middle;
+    text-align: center;
+}
+/* модальный блок */
+.dm-modal {
+    display: inline-block;
+    padding: 20px;
+/* максимально возможная ширина */
+    max-width: 40em;
+    background: #614051;
+/* внешняя тень блока */
+    -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    text-align: center;
+	
+/* анимация и время задержки */
+    -webkit-animation: fade .8s;
+    -moz-animation: fade .8s;
+    animation: fade .8s;
+}
+/* анимация при появлении затемнения и блоков с содержанием */
+@-moz-keyframes fade {
+    from { opacity: 0; }
+to { opacity: 1 }
+}
+@-webkit-keyframes fade {
+    from { opacity: 0; }
+to { opacity: 1 } 
+}
+@keyframes fade {
+    from { opacity: 0; }
+to { opacity: 1 }
+}
 
+/* изображения в модальном окне */
+.dm-modal img {
+    width: 100%;
+    height: auto;
+}
+/* миниатюры изображений */
+.pl-left,.pl-right {
+    width: 25%;
+    height: auto;
+}
+.pl-right {
+    float: right;
+    margin: 5px 0 5px 15px;
+}
+.pl-left {
+    float: left;
+    margin: 5px 15px 5px 0;
+}
+</style>
+<div class="dm-overlay" id="win1" onclick="document.getElementById('win1').style.display='none';">
+    <div class="dm-table">
+        <div class="dm-cell">
+            <div class="dm-modal">
+                <a href="#close" class="close"></a>
+                <h3><strong>Передмова...</strong></h3>
+                <p>Крута передмова до сліз...Крута передмова до сліз...Крута передмова до сліз...
+				Крута передмова до сліз...Крута передмова до сліз...Крута передмова до сліз...Крут
+				а передмова до сліз...Крута передмова до сліз...Крута передмова до сліз...Крута пе
+				редмова до сліз...Крута передмова до сліз...Крута передмова до сліз...</p>
+				<p>Підказки: <br>* лупа<br>* зниpу картки є ще<br>* ще щось<br>* ще щось</p>
+				<p>Натисніть кудись, щоб сховати це вікно.<br>:)</p>
+            </div>
+        </div>
+    </div>
+</div>
 <a href="img/ttest.jpg" class="zoom" class = 'fig'>
     <img src="img/ttest1.jpg" width = '100%' usemap="#workmap"height = '100%'class = 'fig' alt="This is the Display Image" />
 </a>
 
 <script type="text/javascript">
-
 $(function(){
     $('.zoom').zoomy();                
 }(jQuery))
-
-
 </script>
-<map name="workmap" >
-  <area shape="rect" coords="2270,530,2400,270" alt="Матвій" href="matviy.html" >
-</map>
 </body>
-</html> 
+</html>
