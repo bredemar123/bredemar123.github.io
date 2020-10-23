@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<head>
+	<meta charset = "utf-8" />
+	<title>Untitled 2</title>
+    
+<link type="text/css" rel="stylesheet" href="zoomy.css"/>
+
+<script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="zoomy.js"></script>
+</head>
+
+<body>
+
+
+<style> .fig {
+  text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;border: none;
+	font-family: 'SegoeScript';
+}
+</style>
+
+<a href="img/test.png" class="zoom" class = 'fig'>
+    <img src="img/test1.png" width = '100%' usemap="#workmap"height = '100%'class = 'fig' alt="This is the Display Image" />
+</a>
+
+<script type="text/javascript">
+
+$(function(){
+    $('.zoom').zoomy();                
+}(jQuery))
+
+
+</script><map name="workmap" >
+  <area shape="rect" coords="2270,530,2400,270" alt="Матвій" href="matviy.html" >
+</map>
+</body>
+</html>
