@@ -30,7 +30,7 @@
 
 	//defaults && option list
 	    var defaults = {
-		    zoomSize: 240,
+		    zoomSize: 250,
 		    round: true,
 		    glare: false,
 		    clickable: false,
