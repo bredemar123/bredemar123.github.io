@@ -8,7 +8,18 @@
 <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="zoomy.js"></script>
 </head>
-
+<script>//создаем JQuery функцию, которая будет подгружать изображения в буфер
+jQuery.preloadImages = function()
+ {
+  for(var i = 0; i < arguments.length; i++)
+  {
+   jQuery("<img>").attr("src", arguments[ i ]);
+  }
+ };
+ 
+//указываем путь к изображению, которое нужно подгрузить
+$.preloadImages("ttest.jpg", "ttest1.jpg");
+</script>
 <body>
 
 
