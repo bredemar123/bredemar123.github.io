@@ -111,7 +111,17 @@ to { opacity: 1 }
     margin: 5px 15px 5px 0;
 }
 </style>
-<div class="dm-overlay" id="win1" onclick="document.getElementById('win1').style.display='none';">
+
+<a href="img/ttest.jpg" class="zoom" class = 'fig'>
+    <img src="img/ttest1.jpg" width = '100%' usemap="#workmap"height = '100%'class = 'fig' alt="This is the Display Image" />
+</a>
+
+<script type="text/javascript">
+$(function(){
+    $('.zoom').zoomy();                
+}(jQuery))
+</script>
+	<div class="dm-overlay" id="win1" onclick="document.getElementById('win1').style.display='none';">
     <div class="dm-table">
         <div class="dm-cell">
             <div class="dm-modal">
@@ -127,14 +137,5 @@ to { opacity: 1 }
         </div>
     </div>
 </div>
-<a href="img/ttest.jpg" class="zoom" class = 'fig'>
-    <img src="img/ttest1.jpg" width = '100%' usemap="#workmap"height = '100%'class = 'fig' alt="This is the Display Image" />
-</a>
-
-<script type="text/javascript">
-$(function(){
-    $('.zoom').zoomy();                
-}(jQuery))
-</script>
 </body>
 </html>
