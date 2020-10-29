@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>[Pure CSS] One page scroll</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+<style>
+
+* {box-sizing: border-box;}
+
+.img-magnifier-container {
+  position:relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 30%;
+	cursor: none;
+  /*Установите размер увеличительного стекла:*/
+  width: 275px;
+  height: 275px;
+}
+.fig {
+  text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;border: none;
+	font-family: 'SegoeScript';
+}
+.image-flex {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+/* слой затемнения */
+.dm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+/* активируем слой затемнения и модальное окно */
+.dm-overlay:target {
+    display: block;
+/* анимация и время задержки */
+    -webkit-animation: fade .6s;
+    -moz-animation: fade .6s;
+    animation: fade .6s;
+}
+/* блочная таблица */
+.dm-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+/* ячейка блочной таблицы */
+.dm-cell {
+    display: table-cell;
+    padding: 0 1em;
+    vertical-align: middle;
+    text-align: center;
+}
+/* модальный блок */
+.dm-modal {
+    display: inline-block;
+    padding: 20px;
+/* максимально возможная ширина */
+    max-width: 40em;
+    background: #614051;
+/* внешняя тень блока */
+    -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    text-align: center;
+	
+/* анимация и время задержки */
+    -webkit-animation: fade .8s;
+    -moz-animation: fade .8s;
+    animation: fade .8s;
+}
+/* анимация при появлении затемнения и блоков с содержанием */
+@-moz-keyframes fade {
+    from { opacity: 0; }
+to { opacity: 1 }
+}
+@-webkit-keyframes fade {
+    from { opacity: 0; }
+to { opacity: 1 } 
+}
+@keyframes fade {
+    from { opacity: 0; }
+to { opacity: 1 }
+}
+
+/* изображения в модальном окне */
+.dm-modal img {
+    width: 100%;
+    height: auto;
+}
+/* миниатюры изображений */
+.pl-left,.pl-right {
+    width: 25%;
+    height: auto;
+}
+.pl-right {
+    float: right;
+    margin: 5px 0 5px 15px;
+}
+.pl-left {
+    float: left;
+    margin: 5px 15px 5px 0;
+}
+url('https://fonts.googleapis.com/css?family=Roboto');
+ body{
+     font-family: 'Roboto', sans-serif;
+}
+ h1{
+     text-align: center;
+     color: #4181ee;
+}
+ .wrapper{
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+}
+ .card{
+    max-width: 450px;
+     min-height: 250px;
+     background: #02b875;
+     padding: 30px;
+     box-sizing: border-box;
+     color: #FFF;
+     margin:20px;
+     box-shadow: 0px 2px 18px -4px rgba(0,0,0,0.75);
+}
+.card1{
+     max-width: 950px;
+     min-height: 200px;
+     background: rgba(2,184,117 ,0.1);
+     padding: 40px;
+     box-sizing: border-box;
+     color: #FFF;
+     margin:50px;
+	 border-radius: 10%;
+     box-shadow: 0px 2px 18px -4px rgba(0,0,0,0.75);
+}
+ .card:nth-child(2){
+    background: #4181ee;
+}
+ .card:last-child{
+    background: #673ab7;
+}
+ .card-title{
+	 text-align:center;
+     margin-top: 0;
+     font-size: 25px;
+     font-weight: 600;
+     letter-spacing: 1.2px;
+}
+ .card-content{
+	text-indent: 25px;
+     font-size: 20px;
+     letter-spacing: 0.5px;
+     line-height: 1.5;
+}
+.card-content{
+	text-indent: 25px;
+     font-size: 15px;
+     letter-spacing: 0.5px;
+     line-height: 1.5;
+}
+ .card-btn{
+     all: unset;
+     display: block;
+     margin-left: auto;
+     border: 2px solid #FFF;
+     padding: 10px 15px;
+     border-radius: 25px;
+     font-size: 10px;
+     font-weight: 600;
+     transition: all 0.5s;
+     cursor: pointer;
+     letter-spacing: 1.2px;
+}
+ .card-btn:hover{
+    color:#02b875;
+    background: #FFF;
+}
+ .card:nth-child(2) .card-btn:hover{
+    color:#4181ee;
+    background: #FFF;
+}
+ .card:last-child .card-btn:hover{
+    color:#673ab7;
+     background: #FFF;
+}
+* {box-sizing: border-box;}
+.image-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0.5px;
+  background: #DAEBE8;
+}
+.image-inner {position: relative;}
+.image-wrapper img {
+  display: block;
+  width: 100%;
+}
+.image-wrapper:before,
+.image-wrapper:after,
+.image-inner:before,
+.image-inner:after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+}
+
+body {background: #F9F9F9;}
+.frame-outer {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  border: 10px solid #D7CDC7;
+  padding: 10px;
+}
+.frame-inner {
+  text-align: center;
+  position: relative;
+  border: 10px solid #D7CDC7;
+ }
+.frame-outer:before, 
+.frame-outer:after, 
+.frame-inner:before, 
+.frame-inner:after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #F9F9F9;
+  background-image: linear-gradient(90deg, #DB9E3D 33%, rgba(255,255,255,0) 33%, rgba(255,255,255,0) 66%, #DB9E3D 66%, #DB9E3D),
+  linear-gradient(90deg, #DB9E3D 33%, rgba(255,255,255,0) 33%, rgba(255,255,255,0) 66%, #DB9E3D 66%, #DB9E3D);
+  background-repeat: no-repeat;
+  background-size: 30px 10px;
+  background-position: 0 0, 0 20px;
+}
+.frame-outer:before {
+  left: -10px;
+  top: -10px;
+  z-index: 3;
+}
+.frame-outer:after {
+  right: -10px;
+  top: -10px;
+  z-index: 3;
+  background-position: 10px 0, 10px 20px;
+}
+.frame-inner:before {
+  left: -30px;
+  bottom: -30px;
+  background-position: 0 10px, 0px 30px;
+}
+.frame-inner:after {
+  right: -30px;
+  bottom: -30px;
+  background-position: 10px 10px, 10px 30px;
+}
+.frame-inner p {
+font-family: 'Open Sans', sans-serif;
+  font-style: italic;
+  font-size: 18px; 
+  color: #7A7B82; 
+  line-height: 1.5;
+}
+.border {
+  background: #F4F0E9;
+  padding: 40px;
+}
+.border-top, 
+.border-bottom {
+  border: 3px solid #AF8B52;
+  height: 12px;
+  position: relative;
+}
+.border-top:before, 
+.border-top:after, 
+.border-bottom:before, 
+.border-bottom:after {
+  content: "";
+  position: absolute;
+  border: 3px solid #AF8B52;
+  width: 20px;
+  height: 20px;
+}
+.border-top:before {
+  border-radius: 0 100%;
+  left: -26px;
+  top: -26px;
+}
+.border-top:after {
+  border-radius: 100% 0;
+  right: -26px;
+  top: -26px;
+}
+.border-bottom:before {
+  border-radius: 100% 0;
+  left: -26px;
+  bottom: -26px;
+}
+.border-bottom:after {
+  border-radius: 0 100%;
+  right: -26px;
+  bottom: -26px;
+}
+.center {
+  border-left: 3px solid #AF8B52;
+  border-right: 3px solid #AF8B52;
+}
+.center p {
+  margin: 0;
+  padding: 40px 30px;
+  color: #AF8B52;
+  font-family: 'Open Sans', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.5;
+}
+</style>
+ <script>
+function magnify(imgID, zoom) {
+  var img, glass, w, h, bw;
+  img = document.getElementById(imgID);
+  /*создать увеличительное стекло:*/
+  glass = document.createElement("DIV");
+  glass.setAttribute("class", "img-magnifier-glass");
+  /*вставить увеличительное стекло:*/
+  img.parentElement.insertBefore(glass, img);
+  /*установите свойства фона для увеличительного стекла:*/
+  glass.style.backgroundImage = "url('" + img.src + "')";
+  glass.style.backgroundRepeat = "no-repeat";
+  glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+  bw = 3;
+  w = glass.offsetWidth / 2;
+  h = glass.offsetHeight / 2;
+  /*выполните функцию, когда кто-то перемещает лупу по изображению:*/
+  glass.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mousemove", moveMagnifier);
+  /*а также для сенсорных экранов:*/
+  glass.addEventListener("touchmove", moveMagnifier);
+  img.addEventListener("touchmove", moveMagnifier);
+  function moveMagnifier(e) {
+    var pos, x, y;
+    /*предотвратите любые другие действия, которые могут произойти при перемещении по изображению*/
+    e.preventDefault();
+    /*получить позиции курсора x и y:*/
+    pos = getCursorPos(e);
+    x = pos.x;
+    y = pos.y;
+    /*не допускайте размещения увеличительного стекла вне изображения:*/
+    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+    if (x < w / zoom) {x = w / zoom;}
+    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+    if (y < h / zoom) {y = h / zoom;}
+    /*установите положение увеличительного стекла:*/
+    glass.style.left = (x - w) + "px";
+    glass.style.top = (y - h) + "px";
+    /*покажите что такое лупа:*/
+    glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*получить x и y позиции изображения:*/
+    a = img.getBoundingClientRect();
+    /*вычислите координаты курсора x и y относительно изображения:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*рассмотрим любую прокрутку страницы:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+</script>
+<!-- Inputs-->
+<input type="radio" name="item" checked="checked" id="section1"/>
+<input type="radio" name="item" id="section2"/>
+<input type="radio" name="item" id="section3"/>
+<input type="radio" name="item" id="section4"/>
+<!-- Navigation-->
+<nav class="nav">
+  <label class="nav__item" for="section1"></label>
+  <label class="nav__item" for="section2"></label>
+  <label class="nav__item" for="section3"></label>
+  <label class="nav__item" for="section4"></label>
+</nav>
+<!-- Sections-->
+<section>
+
+
+<<div class="border">
+  <div class="border-top"></div>
+  <div class="center"><p>«Людина без друзів, як дерево без коріння» - прислів’я, якого навчають нас змалечку. Однак, друзі це люди, які приходять в наше життя та йдуть, залишаючи по собі певні сліди. Не вони нас оберігають в хвилини смутку, горя та болю. І не вони найщиріше радіють нашим досягненням. 
+⠀⠀⠀⠀</br></br>Сім’я. Ось без чого існування дійсно перетворюється на самотні блукання перекотиполем. Родина це те, що допомагає не втрачати міцності. В ній наша сила і пам’ять. Тому знати своє коріння потрібно не тільки заради цікавих історій. Покоління, які жили до нас створювали історію та суспільство, в якому ми живемо зараз. Саме їм можна подякувати за збереження нашого духу, традицій, відкриття правди про минуле. Їхня витримка, любов та впертість створили умови для нашої появи. Молоді покоління, в свою чергу,  повинні зробити все, щоб зберегти цю унікальну спадщину.
+⠀⠀⠀⠀</br></br>Це дерево з’явилося завдяки сучасним технологіям. Я створював його, щоб розказати історію тих людей, без яких моє існування було б неможливим, неповним чи нудним. Я розповім вам короткі біографії, покажу фото і тим самим зможу хоч якось увіковічнити пам’ять про моїх рідних та просто подякувати їм за те, що вони є або були. 
+</p></div>
+  <div class="border-bottom"></div>
+</div>
+
+</section>
+<section>
+<div class="image-wrapper">
+  <div class="image-inner">
+     <div class="img-magnifier-container">
+  <div class="image-flex"><img  id="myimage" src="tres1.png" width="75%" height="650"></div>
+  </div>
+</div>
+  
+<script>
+/* Инициировать функцию увеличения
+   с идентификатором изображения и силой увеличительного стекла:*/
+magnify("myimage", 2.5);
+</script>
+</section>
+<section>
+
+
+</section>
+<section>
+  <h1><font color ='black'>Дякую за перегляд.</font></h1>
+</section>
+<!-- Fix the white space when scrolling two sections at the same time-->
+<div class="cover"></div>
+  
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
